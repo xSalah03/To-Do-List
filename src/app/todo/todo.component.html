@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="text-center">To Do List</h2>
+            <form>
+              <div class="form-group mb-4 d-flex">
+                <input type="text" class="form-control" placeholder="Enter task" name="inputValue" [(ngModel)]="newTodo">
+                <button type="button" class="btn btn-success w-10" (click)="saveTodo()">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h2>Tasks:</h2>
+            <form>
+              <div class="form-group m-5 d-flex justify-content-between align-items-center"
+                *ngFor="let todo of todos;let i = index;">
+                <span>
+  
+                  <h6>{{i + 1}}</h6>
+                </span>
+                <h6 class="{{(!todo.isCompleted)?'done': ''}}">{{todo.name}}</h6>
+                <span>
+                  <button *ngIf="showElement" type="button" class="btn btn-primary w-10" (click)="done(i)">Finish</button>
+                  <button type="button" class="btn btn-danger w-10" (click)="remove(i)">Remove</button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
